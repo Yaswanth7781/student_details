@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padam Yaswanth Raj | Developer Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --surface-color: #161b22;
+            --primary-color: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
+            --card-hover: #1f2428;
+            --accent: #2ea043;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Hero Section */
+        header {
+            padding: 80px 0 50px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            background-color: var(--surface-color);
+        }
+
+        .contact-links a:hover {
+            border-color: var(--text-muted);
+            background-color: var(--card-hover);
+        }
+
+        .contact-links i {
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--primary-color);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background-color: var(--surface-color);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .skill-list {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Timelines (Experience, Projects, Education) */
+        .timeline-item {
+            margin-bottom: 40px;
+            padding-left: 20px;
+            border-left: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-subtitle {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .timeline-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: var(--surface-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            margin-top: 5px;
+        }
+
+        .timeline-content {
+            margin-top: 10px;
+        }
+        
+        .project-desc {
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .timeline-content ul {
+            padding-left: 20px;
+            margin-top: 10px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .timeline-content li {
+            margin-bottom: 8px;
+        }
+
+        .tech-stack {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-badge {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+
+        /* Certifications Table */
+        .cert-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .cert-table th, .cert-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .cert-table th {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+        }
+
+        .cert-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Achievements */
+        .achievement-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .achievement-icon {
+            font-size: 1.5rem;
+            color: #e3b341;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Padam Yaswanth Raj</h1>
+            <p class="hero-subtitle">Software Engineer & Machine Learning Enthusiast</p>
+            
+            <div class="contact-links">
+                <a href="mailto:padamyaswanth@gmail.com"><i class="fas fa-envelope"></i> padamyaswanth@gmail.com</a>
+                <a href="tel:+919032564677"><i class="fas fa-phone"></i> +91-9032564677</a>
+                <a href="https://linkedin.com/in/padam-yaswanth-raj" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/Yaswanth7781" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://leetcode.com/u/yaswanth12092005/" target="_blank"><i class="fas fa-code"></i> LeetCode</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="skills">
+            <h2><i class="fas fa-tools"></i> Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-category">Languages</div>
+                    <div class="skill-list">C++, JavaScript, Python, Java</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-category">Frameworks & Libraries</div>
+                    <div class="skill-list">Django, Flask, React.js, Node.js, Express.js, Tailwind CSS, Pandas, scikit-learn, NumPy, OpenCV, Matplotlib, Seaborn, NLTK</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-category">Web Technologies & Databases</div>
+                    <div class="skill-list">HTML, CSS | MongoDB, Oracle SQL, PostgreSQL</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-category">Tools & Platforms</div>
+                    <div class="skill-list">VS Code, Git, Linux, JWT, Railway</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">Python Development Intern</div>
+                        <div class="timeline-subtitle">CODEXINTERN</div>
+                    </div>
+                    <div class="timeline-date">September 2025 - October 2025</div>
+                </div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Initiated scalable backend and machine learning components for production-grade applications, contributing to Python-based development workflows and implementing core logic for real-time model execution.</li>
+                        <li>Constructed a Flask-based sentiment analyzer and a regression-driven price predictor, delivering three deployable ML models that improved prediction reliability by 25% through effective preprocessing.</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">scikit-learn</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">HTML/CSS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2><i class="fas fa-project-diagram"></i> Featured Projects</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">Smart Hardware Service Aggregator Platform</div>
+                        <div class="timeline-subtitle">
+                            <a href="https://github.com/Yaswanth7781/computer-hardware-service-webapplication" target="_blank" style="color:var(--primary-color); text-decoration:none;"><i class="fab fa-github"></i> GitHub Repository</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <p class="project-desc">A full-stack web application that connects customers with nearby hardware service centers within a 20km radius using interactive mapping and real-time vendor dashboards.</p>
+                    <ul>
+                        <li><strong>Customer Features:</strong> Role-based authentication, automatic geolocation detection, interactive Leaflet maps, and instant service bookings.</li>
+                        <li><strong>Vendor Features:</strong> Dedicated dashboard for service catalog management, real-time incoming order tracking, and dynamic customer routing via Google Maps links.</li>
+                        <li>Secured application endpoints using JSON Web Tokens (JWT) and Bcrypt for robust password hashing.</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">React.js</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">MongoDB</span>
+                        <span class="tech-badge">Tailwind CSS</span>
+                        <span class="tech-badge">React-Leaflet</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">News Platform (News-Blog)</div>
+                        <div class="timeline-subtitle">
+                            <a href="https://pyrnews.onrender.com/" target="_blank" style="color:var(--primary-color); text-decoration:none;"><i class="fas fa-external-link-alt"></i> Live Application</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <p class="project-desc">A dynamic, full-featured news website built with Django and backed by a PostgreSQL database, featuring a flexible, group-based authentication system.</p>
+                    <ul>
+                        <li>Implemented role-based access control where only designated "Authors" can post news, while standard users can register, log in, and view articles.</li>
+                        <li>Developed author-specific controls ensuring writers can only edit or delete their own published content.</li>
+                        <li>Configured a powerful Django backend Admin Panel to efficiently manage users, permission groups, and site-wide news content.</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Django</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">HTML/CSS</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">Waste Segregation Text Classification Using NLP and ML</div>
+                        <div class="timeline-subtitle">
+                            <a href="https://github.com/Yaswanth7781/NLP--and-Deep-Learning-waste-segregation-text--classification-using-SVM-TF-IDF" target="_blank" style="color:var(--primary-color); text-decoration:none;"><i class="fab fa-github"></i> GitHub Repository</a>
+                        </div>
+                    </div>
+                    <div class="timeline-date">August 2025 - October 2025</div>
+                </div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Developed an NLP-based text classification system to automatically categorize waste descriptions using TF-IDF and SVM.</li>
+                        <li>Applied comprehensive text preprocessing (cleaning, tokenization, stop-word removal, vectorization) to enhance model accuracy.</li>
+                        <li>Built a scalable machine-learning solution supporting smart waste management and environmental sustainability.</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">NLP</span>
+                        <span class="tech-badge">TF-IDF</span>
+                        <span class="tech-badge">SVM</span>
+                        <span class="tech-badge">Pandas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">Carbon Footprint Optimization in IoT Device Usage using ML</div>
+                        <div class="timeline-subtitle">
+                            <a href="https://carbonfootprintoptimizer.onrender.com" target="_blank" style="color:var(--primary-color); text-decoration:none;"><i class="fas fa-external-link-alt"></i> Live Application</a>
+                        </div>
+                    </div>
+                    <div class="timeline-date">February 2025 - May 2025</div>
+                </div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Developed a predictive ML framework using XGBoost and SVM to forecast energy consumption and classify IoT devices, achieving a 20% improvement over baseline performance.</li>
+                        <li>Configured a complete ML pipeline with preprocessing, scaling, and model tuning, strengthening forecasting stability and reducing prediction variance by 15%.</li>
+                        <li>Achieved a 98% prediction accuracy, enabling actionable scheduling recommendations.</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">XGBoost</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">Matplotlib</span>
+                        <span class="tech-badge">Seaborn</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <h2><i class="fas fa-trophy"></i> Achievements</h2>
+            
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                <div>
+                    <h3 class="timeline-title" style="margin-bottom: 5px;">200 Days Badge Leetcode</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Received a 200-day LeetCode streak, completing 400+ problems with consistent daily practice. <a href="https://leetcode.com/u/yaswanth12092005/" target="_blank" style="color: var(--primary-color); text-decoration: none;">View Profile <i class="fas fa-external-link-alt" style="font-size: 0.8em;"></i></a></p>
+                </div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-icon"><i class="fas fa-star"></i></div>
+                <div>
+                    <h3 class="timeline-title" style="margin-bottom: 5px;">Dean's List (Top 10% of University)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Earned Dean's List distinction by placing in the top 10% of students based on academic performance. (October & November 2025)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">Lovely Professional University</div>
+                        <div class="timeline-subtitle">Bachelor of Technology in Computer Science and Engineering</div>
+                        <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Punjab, India | CGPA: 8.81</div>
+                    </div>
+                    <div class="timeline-date">Since August 2023</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">Aditya Junior College</div>
+                        <div class="timeline-subtitle">Intermediate</div>
+                        <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Sri Nagar, Kakinada | Percentage: 96.7%</div>
+                    </div>
+                    <div class="timeline-date">April 2021 - March 2023</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">Sri Chaitanya Techno School</div>
+                        <div class="timeline-subtitle">Matriculation</div>
+                        <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Laxmi Nagar, Kakinada | Percentage: 98.3%</div>
+                    </div>
+                    <div class="timeline-date">April 2020 - March 2021</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates">
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <div style="overflow-x: auto;">
+                <table class="cert-table">
+                    <thead>
+                        <tr>
+                            <th>Certification Name</th>
+                            <th>Issuer</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Privacy and Security in Online Social Media</td>
+                            <td>NPTEL</td>
+                            <td>November 2025</td>
+                        </tr>
+                        <tr>
+                            <td>MySQL HeatWave Implementation Certified Associate Rel 1</td>
+                            <td>Oracle</td>
+                            <td>October 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Machine Learning with Data Science, Git and Github</td>
+                            <td>CipherSchools</td>
+                            <td>July 2025</td>
+                        </tr>
+                        <tr>
+                            <td>C++, Java Programming Certifications</td>
+                            <td>Neo Colab</td>
+                            <td>May 2025</td>
+                        </tr>
+                        <tr>
+                            <td>Full Stack Developer Bootcamp</td>
+                            <td>GeeksforGeeks</td>
+                            <td>August 2024</td>
+                        </tr>
+                        <tr>
+                            <td>Programming in Python</td>
+                            <td>GeeksforGeeks</td>
+                            <td>December 2023</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Padam Yaswanth Raj. Built with precision.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
